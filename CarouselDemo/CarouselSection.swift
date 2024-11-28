@@ -11,7 +11,7 @@ final class CarouselSection {
     private weak var collectionView: UICollectionView?
     private var scales: [IndexPath: CGFloat]
 
-    private let itemScale: CGFloat = 0.9 /// cell item width scale
+    private let itemScale: CGFloat = 0.7 /// cell item width scale
 
     init(collectionView: UICollectionView) {
         self.collectionView = collectionView
@@ -51,7 +51,7 @@ final class CarouselSection {
             let xOffset = offset.x + itemOffset
             items.forEach { item in
                 let distanceFromCenter = abs((item.frame.midX - offset.x) - width / 2.0)
-                let minScale: CGFloat = 0.9
+                let minScale: CGFloat = 0.7
                 let scale: CGFloat = minScale + (1.0 - minScale) * exp(-distanceFromCenter / (itemWidth / 2))
                 self.scales[item.indexPath] = scale
                 guard let cell = self.collectionView?.cellForItem(at: item.indexPath) else { return }
